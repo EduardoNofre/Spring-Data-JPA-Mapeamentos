@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.api.spring.projections.app.estudo.dao.FuncionarioDao;
 import com.api.spring.projections.app.estudo.entity.FuncionarioEntity;
+import com.api.spring.projections.app.estudo.handle.FuncionarioNaoEncontradoAtualizarExceptions;
+import com.api.spring.projections.app.estudo.handle.FuncionarioNaoEncontradoExceptions;
 
 @Service
 public class FuncionarioService {
@@ -21,7 +23,7 @@ public class FuncionarioService {
 
 	}
 
-	public FuncionarioEntity buscaIdFuncionario(Integer id) {
+	public FuncionarioEntity buscaIdFuncionario(Integer id) throws Exception{
 
 		Optional<FuncionarioEntity> funcionario = funcionarioDao.buscaId(id);
 
@@ -31,7 +33,7 @@ public class FuncionarioService {
 
 		} else {
 
-			return null;
+			throw new FuncionarioNaoEncontradoExceptions();
 
 		}
 	}
@@ -63,7 +65,7 @@ public class FuncionarioService {
 		return funcionarioDao.inserir(funcionario);
 	}
 
-	public FuncionarioEntity atualizarFuncionario(FuncionarioEntity funcionario) {
+	public FuncionarioEntity atualizarFuncionario(FuncionarioEntity funcionario) throws Exception{
 
 		if (funcionarioDao.existeFuncionario(funcionario.getId())) {
 
@@ -71,7 +73,7 @@ public class FuncionarioService {
 
 		} else {
 
-			return null;
+			throw new FuncionarioNaoEncontradoAtualizarExceptions();
 		}
 	}
 }

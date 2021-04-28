@@ -36,7 +36,7 @@ public class FuncionarioController {
 	private FuncionarioService funcionarioService;
 
 	@Operation(summary = "Busca funcionário por id", description = "Busca funcionário por id no banco de dados", tags = {"Busca por id" })
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso"+
+	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
 			" <br />responseCode = 200, Funcionário encontrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
 			" <br />responseCode = 401, Não autorizado." + 
@@ -46,13 +46,13 @@ public class FuncionarioController {
 			)})
 	@GetMapping(value = "id/{id}", produces = { "application/json", "application/xml" })
 	public ResponseEntity<FuncionarioEntity> buscaId(
-			@Parameter(description = "id funcionario não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) {
+			@Parameter(description = "id funcionario não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) throws Exception {
 
 		return new ResponseEntity<FuncionarioEntity>(funcionarioService.buscaIdFuncionario(id), HttpStatus.OK);
 	}
 
 	@Operation(summary = "Busca todos os funcionário", description = "Busca todos os funcionário", tags = {"Busca todos" })
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso"+
+	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
 			" <br />responseCode = 200, Funcionários encontrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
 			" <br />responseCode = 401, Não autorizado." + 
@@ -67,7 +67,7 @@ public class FuncionarioController {
 	}
 
 	@Operation(summary = "Cadastro de funcionário", description = "Cadastro de funcionário", tags = {"Cadastro" })
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso"+
+	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
 			" <br />responseCode = 200, Funcionários cadastrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
 			" <br />responseCode = 401, Não autorizado." + 
@@ -89,7 +89,7 @@ public class FuncionarioController {
 	}
 	
 	@Operation(summary = "Cadastro de funcionário", description = "Cadastro de funcionário", tags = {"Cadastro" })
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso"+
+	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
 			" <br />responseCode = 200, Funcionário cadastrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
 			" <br />responseCode = 401, Não autorizado." + 
@@ -98,7 +98,7 @@ public class FuncionarioController {
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
 	@PutMapping(value = "atualizar", produces = { "application/json", "application/xml" })
-	public ResponseEntity<FuncionarioEntity> atualizaFuncionario(@RequestBody @Valid FuncionarioEntity funcionarioEntity) {
+	public ResponseEntity<FuncionarioEntity> atualizaFuncionario(@RequestBody @Valid FuncionarioEntity funcionarioEntity) throws Exception {
 
 		return new ResponseEntity<FuncionarioEntity>(funcionarioService.atualizarFuncionario(funcionarioEntity), HttpStatus.OK);
 	}
@@ -112,7 +112,7 @@ public class FuncionarioController {
 			" <br />responseCode = 500, Erro interno sem causa mapeada." +
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
-	@DeleteMapping(value = "atualizar", produces = { "application/json", "application/xml" })
+	@DeleteMapping(value = "delete/{id}", produces = { "application/json", "application/xml" })
 	public ResponseEntity<Boolean> deletaFuncionario(@Parameter(description = "id funcionario não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) {
 
 		return new ResponseEntity<Boolean>(funcionarioService.removerFuncionario(id), HttpStatus.OK);
