@@ -42,8 +42,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             if (exceptionClass.isAssignableFrom(ApiException.class)) {
                 return handleCliente((ApiException) exception.getUndeclaredThrowable(), request);
             }
-            if (CodigoDeErroException.class.isAssignableFrom(exceptionClass)) {
-                return handleCodigoDeErro((CodigoDeErroException) exception.getUndeclaredThrowable(), request);
+            if (CodigoErroException.class.isAssignableFrom(exceptionClass)) {
+                return handleCodigoDeErro((CodigoErroException) exception.getUndeclaredThrowable(), request);
             }
 
             message = messageSource.getMessage("error.server", new Object[]{exception.getUndeclaredThrowable().getMessage()}, null);
@@ -65,10 +65,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(e, error, headers, HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 
-    @ExceptionHandler({CodigoDeErroException.class})
+    @ExceptionHandler({CodigoErroException.class})
     private ResponseEntity<Object> handleCodigoDeErro(Exception e, WebRequest request) {
     	CustomErrorResponse error = new CustomErrorResponse();
-        CodigoDeErroException codigoDeErroException = (CodigoDeErroException) e;
+        CodigoErroException codigoDeErroException = (CodigoErroException) e;
 
         error.setError(e.getMessage());
         error.setStatus(HttpStatus.BAD_REQUEST.value());

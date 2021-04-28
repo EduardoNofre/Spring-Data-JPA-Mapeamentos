@@ -2,7 +2,7 @@ package com.api.spring.projections.app.estudo.exceptions;
 
 import com.api.spring.projections.app.estudo.enums.protocoloInternalErrorCodesEnum;
 
-public abstract class GenericException extends CodigoDeErroException {
+public abstract class GenericException extends CodigoErroException {
 
 	private static final long serialVersionUID = 1L;
 
