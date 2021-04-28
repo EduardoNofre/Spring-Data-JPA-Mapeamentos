@@ -43,6 +43,6 @@ public class EmpresaEntity {
 	private String cnpj;
 	
 	@OneToMany( targetEntity=FuncionarioEntity.class )
-	   private List employeelist;
+	   private List funcionarioEntityList;
 
 }

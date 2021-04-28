@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.spring.projections.app.estudo.entity.FuncionarioEntity;
-import com.api.spring.projections.app.estudo.service.FuncionarioService;
+import com.api.spring.projections.app.estudo.entity.EmpresaEntity;
+import com.api.spring.projections.app.estudo.service.EmpresaService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -28,14 +28,14 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Validated
-@RequestMapping("/api/funcionario/")
-@Tag(name = "Funcionario Controller", description = "Funcionario crud API")
-public class FuncionarioController {
+@RequestMapping("/api//")
+@Tag(name = "Empresa Controller", description = "Empresa crud API")
+public class EmpresaController {
 
 	@Autowired
-	private FuncionarioService funcionarioService;
+	private EmpresaService empresaService;
 
-	@Operation(summary = "Busca funcionário por id", description = "Busca funcionário por id no banco de dados", tags = {"Busca por id" })
+	@Operation(summary = "Busca empresa por id", description = "Busca empresa por id no banco de dados", tags = {"Busca por id" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
 			" <br />responseCode = 200, Funcionário encontrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
@@ -45,50 +45,45 @@ public class FuncionarioController {
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
 	@GetMapping(value = "id/{id}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<FuncionarioEntity> buscaId(
-			@Parameter(description = "id funcionario não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) throws Exception {
+	public ResponseEntity<EmpresaEntity> buscaId(
+			@Parameter(description = "id empresa não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) throws Exception {
 
-		return new ResponseEntity<FuncionarioEntity>(funcionarioService.buscaIdFuncionario(id), HttpStatus.OK);
+		return new ResponseEntity<EmpresaEntity>(empresaService.buscaIdEmpresa(id), HttpStatus.OK);
 	}
 
-	@Operation(summary = "Busca todos os funcionário", description = "Busca todos os funcionário", tags = {"Busca todos" })
+	@Operation(summary = "Busca todos os empresa", description = "Busca todos os empresa", tags = {"Busca todos" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
-			" <br />responseCode = 200, Funcionários encontrado com sucesso" + 
+			" <br />responseCode = 200, Empresa encontrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
 			" <br />responseCode = 401, Não autorizado." + 
-			" <br />responseCode = 404, nenhum funcionário encontrado." +
+			" <br />responseCode = 404, nenhum empresa encontrado." +
 			" <br />responseCode = 500, Erro interno sem causa mapeada." +
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
 	@GetMapping(value = "todos", produces = { "application/json", "application/xml" })
-	public ResponseEntity<List<FuncionarioEntity>> buscaTodos() {
+	public ResponseEntity<List<EmpresaEntity>> buscaTodos() {
 
-		return new ResponseEntity<List<FuncionarioEntity>>(funcionarioService.buscaTodosFuncionario(), HttpStatus.OK);
+		return new ResponseEntity<List<EmpresaEntity>>(empresaService.buscaTodosEmpresa(), HttpStatus.OK);
 	}
 
-	@Operation(summary = "Cadastro de funcionário", description = "Cadastro de funcionário", tags = {"Cadastro" })
+	@Operation(summary = "Cadastro de empresa", description = "Cadastro de empresa", tags = {"Cadastro" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
-			" <br />responseCode = 200, Funcionários cadastrado com sucesso" + 
+			" <br />responseCode = 200, Empresa cadastrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
 			" <br />responseCode = 401, Não autorizado." + 
 			" <br />responseCode = 500, Erro interno sem causa mapeada." +
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
-	@PostMapping(value = "cadastro/nome{nome}/idade{idade}/valor{valor}/email{email}/endereco{endereco}/cidade{cidade}/uf{uf}/municipio{municipio}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<FuncionarioEntity> cadastroFuncionario(
-			@Parameter(description = "Nome funcionario.", required = true) @PathVariable String nome,
-			@Parameter(description = "Idade funcionario.", required = true) @PathVariable Integer idade,
-			@Parameter(description = "Valor salarial.", required = true) @PathVariable double valor,
-			@Parameter(description = "E-mail funcionario", required = true) @PathVariable String email,
-			@Parameter(description = "Endereco funcionario", required = true) @PathVariable String endereco,
-			@Parameter(description = "Cidade", required = true) @PathVariable String cidade,
-			@Parameter(description = "Uf", required = true) @PathVariable String uf,
-			@Parameter(description = "Municipio", required = true) @PathVariable String municipio) {
+	@PostMapping(value = "cadastro/nome{nome}/nomeFantasia{nomeFantasia}/cnpj{cnpj}", produces = { "application/json", "application/xml" })
+	public ResponseEntity<EmpresaEntity> cadastroEmpresa(
+			@Parameter(description = "Nome empresa.", required = true) @PathVariable String nome,
+			@Parameter(description = "Idade empresa.", required = true) @PathVariable String nomeFantasia,
+			@Parameter(description = "Valor salarial.", required = true) @PathVariable String cnpj) {
 
-		return new ResponseEntity<FuncionarioEntity>(funcionarioService.inserirFuncionario(nome,idade,valor,email,endereco,cidade,uf,municipio), HttpStatus.OK);
+		return new ResponseEntity<EmpresaEntity>(empresaService.inserirEmpresa(nome, nomeFantasia, cnpj), HttpStatus.OK);
 	}
 	
-	@Operation(summary = "Cadastro de funcionário", description = "Cadastro de funcionário", tags = {"Cadastro" })
+	@Operation(summary = "Cadastro de empresa", description = "Cadastro de empresa", tags = {"Cadastro" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
 			" <br />responseCode = 200, Funcionário cadastrado com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
@@ -98,14 +93,14 @@ public class FuncionarioController {
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
 	@PutMapping(value = "atualizar", produces = { "application/json", "application/xml" })
-	public ResponseEntity<FuncionarioEntity> atualizaFuncionario(@RequestBody @Valid FuncionarioEntity funcionarioEntity) throws Exception {
+	public ResponseEntity<EmpresaEntity> atualizaEmpresa(@RequestBody @Valid EmpresaEntity empresaEntity) throws Exception {
 
-		return new ResponseEntity<FuncionarioEntity>(funcionarioService.atualizarFuncionario(funcionarioEntity), HttpStatus.OK);
+		return new ResponseEntity<EmpresaEntity>(empresaService.atualizarEmpresa(empresaEntity), HttpStatus.OK);
 	}
 
-	@Operation(summary = "Cadastro de funcionário", description = "Cadastro de funcionário", tags = {"Cadastro" })
+	@Operation(summary = "Cadastro de empresa", description = "Cadastro de empresa", tags = {"Cadastro" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso"+
-			" <br />responseCode = 200, Funcionários removido com sucesso" + 
+			" <br />responseCode = 200, Empresa removido com sucesso" + 
 			" <br />responseCode = 400, Erro processar a requisição" + 
 			" <br />responseCode = 401, Não autorizado." + 
 			" <br />responseCode = 404, Funcionário não encontrado para ser removido." +
@@ -113,10 +108,13 @@ public class FuncionarioController {
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
 	@DeleteMapping(value = "delete/{id}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Boolean> deletaFuncionario(@Parameter(description = "id funcionario não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) throws Exception {
+	public ResponseEntity<Boolean> deletaEmpresa(@Parameter(description = "id empresa não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) throws Exception {
 
-		return new ResponseEntity<Boolean>(funcionarioService.removerFuncionario(id), HttpStatus.OK);
+		return new ResponseEntity<Boolean>(empresaService.removerEmpresa(id), HttpStatus.OK);
 	}
 
 
+
+
+	
 }

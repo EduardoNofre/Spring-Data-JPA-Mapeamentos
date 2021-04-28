@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.api.spring.projections.app.estudo.dao.FuncionarioDao;
 import com.api.spring.projections.app.estudo.entity.FuncionarioEntity;
 import com.api.spring.projections.app.estudo.handle.FuncionarioNaoEncontradoAtualizarExceptions;
+import com.api.spring.projections.app.estudo.handle.FuncionarioNaoEncontradoDeleteExceptions;
 import com.api.spring.projections.app.estudo.handle.FuncionarioNaoEncontradoExceptions;
 
 @Service
@@ -38,7 +39,7 @@ public class FuncionarioService {
 		}
 	}
 
-	public Boolean removerFuncionario(Integer id) {
+	public Boolean removerFuncionario(Integer id) throws Exception {
 
 		if (funcionarioDao.existeFuncionario(id)) {
 
@@ -47,7 +48,7 @@ public class FuncionarioService {
 			return true;
 		}
 
-		return false;
+		throw new FuncionarioNaoEncontradoDeleteExceptions();
 	}
 
 	public FuncionarioEntity inserirFuncionario(String nome,Integer idade,double valor,String email,String endereco,String cidade,String uf,String municipio) {

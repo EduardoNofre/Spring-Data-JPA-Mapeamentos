@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.api.spring.projections.app.estudo.entity.FuncionarioEntity;
 
 @Repository
-public interface ProjectionRepository extends JpaRepository<FuncionarioEntity, Integer>{
+public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Integer>{
 
 }

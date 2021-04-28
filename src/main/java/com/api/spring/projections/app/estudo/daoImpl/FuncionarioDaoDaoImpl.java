@@ -8,51 +8,51 @@ import org.springframework.stereotype.Component;
 
 import com.api.spring.projections.app.estudo.dao.FuncionarioDao;
 import com.api.spring.projections.app.estudo.entity.FuncionarioEntity;
-import com.api.spring.projections.app.estudo.repository.ProjectionRepository;
+import com.api.spring.projections.app.estudo.repository.FuncionarioRepository;
 
 @Component
 public class FuncionarioDaoDaoImpl implements FuncionarioDao {
 
 	@Autowired
-	private ProjectionRepository projectionRepository;
+	private FuncionarioRepository funcionarioRepository;
 
 	public List<FuncionarioEntity> buscaTodos() {
 
-		List<FuncionarioEntity> funcionarioEntity = projectionRepository.findAll();
+		List<FuncionarioEntity> funcionarioEntity = funcionarioRepository.findAll();
 
 		return funcionarioEntity;
 	}
 
 	public Optional<FuncionarioEntity> buscaId(Integer id) {
 
-		Optional<FuncionarioEntity> funcionarioEntity = projectionRepository.findById(id);
+		Optional<FuncionarioEntity> funcionarioEntity = funcionarioRepository.findById(id);
 
 		return funcionarioEntity;
 	}
 
 	public void remover(Integer id) {
 
-		projectionRepository.deleteById(id);
+		funcionarioRepository.deleteById(id);
 
 	}
 
 	public FuncionarioEntity inserir(FuncionarioEntity funcionario) {
 
-		FuncionarioEntity funcionarioEntity = projectionRepository.save(funcionario);
+		FuncionarioEntity funcionarioEntity = funcionarioRepository.save(funcionario);
 
 		return funcionarioEntity;
 	}
 
 	public FuncionarioEntity atualizar(FuncionarioEntity funcionario) {
 
-		FuncionarioEntity funcionarioEntity = projectionRepository.save(funcionario);
+		FuncionarioEntity funcionarioEntity = funcionarioRepository.save(funcionario);
 
 		return funcionarioEntity;
 	}
 	
 	public boolean existeFuncionario(Integer id) {
 
-		return projectionRepository.findById(id).isPresent();
+		return funcionarioRepository.findById(id).isPresent();
 
 	}
 }
