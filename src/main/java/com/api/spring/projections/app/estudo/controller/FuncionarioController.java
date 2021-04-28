@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Validated
 @RequestMapping("/api/funcionario/")
 @Tag(name = "Funcionario Controller", description = "Funcionario crud API")
-public class ProjectionController {
+public class FuncionarioController {
 
 	@Autowired
 	private FuncionarioService funcionarioService;
@@ -46,7 +46,7 @@ public class ProjectionController {
 			)})
 	@GetMapping(value = "id/{id}", produces = { "application/json", "application/xml" })
 	public ResponseEntity<FuncionarioEntity> buscaId(
-			@Parameter(description = "id funcionario não pode esta vazio.", required = true) @PathVariable Integer id) {
+			@Parameter(description = "id funcionario não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) {
 
 		return new ResponseEntity<FuncionarioEntity>(funcionarioService.buscaIdFuncionario(id), HttpStatus.OK);
 	}
@@ -113,7 +113,7 @@ public class ProjectionController {
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
 	@DeleteMapping(value = "atualizar", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Boolean> deletaFuncionario(@Parameter(description = "id funcionario não pode esta vazio.", required = true) @PathVariable Integer id) {
+	public ResponseEntity<Boolean> deletaFuncionario(@Parameter(description = "id funcionario não pode esta vazio ou  nulo.", required = true) @PathVariable Integer id) {
 
 		return new ResponseEntity<Boolean>(funcionarioService.removerFuncionario(id), HttpStatus.OK);
 	}
