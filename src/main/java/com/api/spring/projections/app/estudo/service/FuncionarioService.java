@@ -51,7 +51,7 @@ public class FuncionarioService {
 
 		System.out.println();
 		
-		throw new FuncionarioNaoEncontradoDeleteExceptions();
+		throw new FuncionarioNaoEncontradoDeleteExceptions(String.valueOf(id));
 	}
 
 	public FuncionarioEntity inserirFuncionario(String nome,Integer idade,double valor,String email,String endereco,String cidade,String uf,String municipio) {
