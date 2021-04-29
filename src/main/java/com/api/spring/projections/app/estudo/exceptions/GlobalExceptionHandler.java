@@ -70,8 +70,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     	CustomErrorResponse error = new CustomErrorResponse();
         CodigoErroException codigoDeErroException = (CodigoErroException) e;
 
+        String codigoHttp = (codigoDeErroException.getErrorcode().getErrorcode().split("\\.")[0]);
+        int httpStatus = Integer.valueOf(codigoHttp);
         error.setError(e.getMessage());
-        error.setStatus(HttpStatus.BAD_REQUEST.value());
+        error.setStatus(httpStatus);
         error.setTimestamp(LocalDateTime.now());
         error.setCodigo(codigoDeErroException.getErrorcode().getErrorcode());
 
@@ -80,7 +82,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         log.debug("Erro genérico: {}", e.getMessage(), e);
 
-        return handleExceptionInternal(e, error, headers, HttpStatus.BAD_REQUEST, request);
+        return handleExceptionInternal(e, error, headers, HttpStatus.valueOf(httpStatus), request);
     }
 
     @ExceptionHandler({ApiException.class})

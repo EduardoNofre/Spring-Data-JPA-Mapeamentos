@@ -3,10 +3,6 @@ package com.api.spring.projections.app.estudo.enums;
 public enum protocoloInternalErrorCodesEnum {
 
 
-
-	//400
-    E400000("400", "000", "N\u00famero do telefone informado n\u00e3o \u00e9 valido: %s"),
-
     //404
     E404000("404", "000", "Funcionario não encontrado: %s"),
     E404001("404", "001", "Funcionario não encontrado para delete: %s"),
