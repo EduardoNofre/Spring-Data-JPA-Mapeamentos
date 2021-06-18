@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.api.spring.projections.app</groupId>
-	<artifactId>Spring-Data-JPA-Projections</artifactId>
+	<artifactId>api-jpa-mapeamentos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring-Data-JPA-Projections</name>
+	<name>api-jpa-mapeamentos</name>
 	<description>java handle exception api 2</description>
 	<properties>
 		<java.version>1.8</java.version>
