@@ -28,9 +28,9 @@ Lombok </br>
    Relaionamento 1 -> N </br>
    
 ## Exemplo - 04
-### Orm Projeto -> Funcionario - @ManyToMany
- * Onde um Funcionario pode esta em varios Projetos e um Projeto pode ter varios Funcionarios </br>
+### Orm Projeto -> Pessoa - @ManyToMany
+ * Onde um Pessoa pode esta em varios Projetos e um Projeto pode ter varias Pessoa </br>
    Relacionamento Muitos para Muitos @ManyToMany </br> 
-   Onde um Funcionario pode esta em varios Projetos e um Projeto pode ter varios Funcionario  </br>
-    Relaionamento N -> N </br>
+   Onde um Pessoa pode esta em varios Projetos e um Projeto pode ter varias Pessoa  </br>
+   Relaionamento N -> N </br>
 
