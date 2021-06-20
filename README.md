@@ -7,20 +7,30 @@ banco H2 </br>
 Lombok </br>
 
 ## Exemplo - 01
-### Orm funcionario -> empresa - @OneToOne
+### Orm Funcionario -> Empresa - @OneToOne
  * Onde um funcionario so pode esta em uma empresa </br>
    Relacionamento um para um @OneToOne </br>
    Um funcionario so pode esta registrado em uma empresa ou departamento.</br>
+   Relaionamento 1 -> 1 </br>
       
 ## Exemplo - 02
 ### Orm Restaurante -> Cozinha - @ManyToOne
  * Onde muitos Restaurantes pode ter uma Cozinha </br>
    Relacionamento muitos para um @ManyToOne </br>
    Varios Restuarantes so pode ter uma cozinha ou um especialidade </br>
+    Relaionamento N -> 1 </br>
    
 ## Exemplo - 03
-### Orm Restaurante -> Cozinha - @oneToMany
- * Onde uma Aula pode ter uma ou muitas coisas </br>
+### Orm Aula -> Tarefa - @oneToMany
+ * Onde uma Aula pode tem nehuma ou muitas Tarefas  </br>
    Relacionamento um para muitos @oneToMany </br> 
    Uma Aula pode ter varias tarefas  </br>
+   Relaionamento 1 -> N </br>
+   
+## Exemplo - 04
+### Orm Projeto -> Funcionario - @ManyToMany
+ * Onde um Funcionario pode esta em varios Projetos e um Projeto pode ter varios Funcionarios </br>
+   Relacionamento Muitos para Muitos @ManyToMany </br> 
+   Onde um Funcionario pode esta em varios Projetos e um Projeto pode ter varios Funcionario  </br>
+    Relaionamento N -> N </br>
 
