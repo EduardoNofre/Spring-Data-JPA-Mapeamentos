@@ -13,7 +13,7 @@ Lombok </br>
       
 ## Exemplo - 02
 ### Orm Restaurante -> Cozinha -  @OneToMany
- * Onde Restaurante pode ter um ou muitas coisas </br>
+ * Onde Cozinha pode ter um ou mais restaurantes </br>
    Relacionamento um para um @OneToMany</br> 
    
 ## Exemplo - 03
