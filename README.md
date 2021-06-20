@@ -7,12 +7,17 @@ banco H2 </br>
 Lombok </br>
 
 ## Exemplo - 01
-### Orm funcionario -> empresa
+### Orm funcionario -> empresa - @OneToOne
  * Onde um funcionario so pode esta em uma empresa </br>
    Relacionamento um para um @OneToOne </br>
       
 ## Exemplo - 02
-### Orm Restaurante -> Cozinha
+### Orm Restaurante -> Cozinha -  @OneToMany
+ * Onde Restaurante pode ter um ou muitas coisas </br>
+   Relacionamento um para um @OneToMany</br> 
+   
+## Exemplo - 03
+### Orm Restaurante -> Cozinha - @ManyToOne
  * Onde Restaurante pode ter um ou muitas coisas </br>
    Relacionamento um para um @OneToMany</br> 
 
