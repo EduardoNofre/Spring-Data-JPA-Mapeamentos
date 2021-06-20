@@ -1,10 +1,15 @@
 package com.api.spring.projections.app.estudo.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -33,5 +38,9 @@ public class AulaEntity {
 	@Size(max = 50)
 	@Column(name = "ProfessorNome", length = 100)
 	private String ProfessorNome;
+	
+	@OneToMany
+	@JoinColumn(name = "aula_id")
+	private List<TarefaEntity> tarefas = new ArrayList<TarefaEntity>();
 
 }

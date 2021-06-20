@@ -55,10 +55,10 @@ public class AulaController {
 			" <br />responseCode = 500, Erro interno sem causa mapeada." +
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
-	@PostMapping(value = "atualizar", produces = { "application/json", "application/xml" })
-	public ResponseEntity<AulaEntity> cadastroFuncionario(@RequestBody @Valid AulaEntity AulaEntity) throws Exception {
+	@PostMapping(value = "cadastro", produces = { "application/json", "application/xml" })
+	public ResponseEntity<AulaEntity> cadastroAula(@RequestBody @Valid AulaEntity aulaEntity) throws Exception {
 
-		return new ResponseEntity<AulaEntity>(aulaService.cadastroAula(AulaEntity), HttpStatus.OK);
+		return new ResponseEntity<AulaEntity>(aulaService.cadastroAula(aulaEntity), HttpStatus.OK);
 	}
 
 }

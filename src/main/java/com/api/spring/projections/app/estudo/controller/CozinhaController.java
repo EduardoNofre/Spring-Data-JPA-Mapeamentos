@@ -42,7 +42,7 @@ public class CozinhaController {
 			" <br />responseCode = 500, Erro interno sem causa mapeada." +
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
-	@GetMapping(value = "todos", produces = { "application/json", "application/xml" })
+	@GetMapping(value = "Todos", produces = { "application/json", "application/xml" })
 	public ResponseEntity<List<CozinhaEntity>> buscaTodos() {
 
 		return new ResponseEntity<List<CozinhaEntity>>(cozinhaService.buscaTodasCozinha(), HttpStatus.OK);
@@ -57,7 +57,7 @@ public class CozinhaController {
 			" <br />responseCode = 500, Erro interno sem causa mapeada." +
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
-	@PostMapping(value = "atualizar", produces = { "application/json", "application/xml" })
+	@PostMapping(value = "Atualizar", produces = { "application/json", "application/xml" })
 	public ResponseEntity<CozinhaEntity> cadastroFuncionario(@RequestBody @Valid CozinhaEntity cozinhaEntity) throws Exception {
 
 		return new ResponseEntity<CozinhaEntity>(cozinhaService.cadastroCozinha(cozinhaEntity), HttpStatus.OK);

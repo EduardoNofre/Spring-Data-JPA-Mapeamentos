@@ -55,7 +55,7 @@ public class TarefaController {
 			" <br />responseCode = 500, Erro interno sem causa mapeada." +
 			" <br />responseCode = 504, Gateway Time-Out." 
 			)})
-	@PostMapping(value = "atualizar", produces = { "application/json", "application/xml" })
+	@PostMapping(value = "cadastro", produces = { "application/json", "application/xml" })
 	public ResponseEntity<TarefaEntity> cadastroFuncionario(@RequestBody @Valid TarefaEntity TarefaEntity) throws Exception {
 
 		return new ResponseEntity<TarefaEntity>(TarefaService.cadastroTarefa(TarefaEntity), HttpStatus.OK);
