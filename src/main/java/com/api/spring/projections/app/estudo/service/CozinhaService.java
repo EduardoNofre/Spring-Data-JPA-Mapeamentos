@@ -10,7 +10,7 @@ import com.api.spring.projections.app.estudo.entity.CozinhaEntity;
 
 @Service
 public class CozinhaService {
-	
+
 	@Autowired
 	private CozinhaDao cozinhaDao;
 
