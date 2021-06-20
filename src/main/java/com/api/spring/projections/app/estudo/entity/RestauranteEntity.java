@@ -32,6 +32,7 @@ public class RestauranteEntity {
 	@Column(name="nome", length = 100)
 	private String nome;
 
+	// Muito restaurantes tem uma cozinha @ManyToOne
 	@ManyToOne
 	@JoinColumn(name="cozinha_id", nullable=false)
 	private CozinhaEntity cozinha;

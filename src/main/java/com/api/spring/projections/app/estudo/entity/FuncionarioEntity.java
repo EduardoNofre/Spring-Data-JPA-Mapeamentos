@@ -66,6 +66,7 @@ public class FuncionarioEntity {
 	@Column(name="municipio", length = 100)
 	private String municipio;
 	
+	// Um funcionario um empresa um para um @OneToOne
 	@OneToOne
 	@JoinColumn(name = "empresa_id", nullable = false)
 	private EmpresaEntity empresa;
