@@ -8,10 +8,9 @@ Lombok </br>
 
 ## Exemplo - 01
 ### Orm funcionario -> empresa
- * Onde funcionario so pode ter uma empresa </br>
+ * Onde um funcionario so pode esta em uma empresa </br>
    Relacionamento um para um @OneToOne </br>
-   
-   
+      
 ## Exemplo - 02
 ### Orm Restaurante -> Cozinha
  * Onde Restaurante pode ter um ou muitas coisas </br>
