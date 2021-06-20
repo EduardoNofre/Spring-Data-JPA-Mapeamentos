@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Validated
-@RequestMapping("/api//")
+@RequestMapping("/api/empresa")
 @Tag(name = "Empresa Controller", description = "Empresa crud API")
 public class EmpresaController {
 

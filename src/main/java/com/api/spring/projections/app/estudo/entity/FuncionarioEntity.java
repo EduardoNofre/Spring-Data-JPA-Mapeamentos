@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -20,9 +22,9 @@ public class FuncionarioEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Schema(description = "Id.", example = "123", required = true)
-	@Column(name="id", length = 9)
-	private Integer id;
+	@Schema(description = "id_funcionario.", example = "123", required = true)
+	@Column(name="id_funcionario", length = 9)
+	private Integer id_funcionario;
 	
 	@Schema(description = "Nome.", example = "abc", required = true)
 	@Size(max = 50)
@@ -63,5 +65,9 @@ public class FuncionarioEntity {
 	@Size(max = 50)
 	@Column(name="municipio", length = 100)
 	private String municipio;
-
+	
+	@OneToOne
+	@JoinColumn(name = "empresa_id", nullable = false)
+	private EmpresaEntity empresa;
+	
 }

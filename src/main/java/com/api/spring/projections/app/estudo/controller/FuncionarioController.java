@@ -88,6 +88,13 @@ public class FuncionarioController {
 		return new ResponseEntity<FuncionarioEntity>(funcionarioService.inserirFuncionario(nome,idade,valor,email,endereco,cidade,uf,municipio), HttpStatus.OK);
 	}
 	
+	
+	@PostMapping(value = "cadastro/", produces = { "application/json", "application/xml" })
+	public ResponseEntity<FuncionarioEntity> cadastroFuncionario(@Parameter(description = "objeto funcionario.", required = true) @RequestBody FuncionarioEntity funcionario) {
+
+		return new ResponseEntity<FuncionarioEntity>(funcionarioService.inserirFuncionario(funcionario), HttpStatus.OK);
+	}
+	
 	@Operation(summary = "Cadastro de funcionário", description = "Cadastro de funcionário", tags = {"Cadastro" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "", description = ""+
 			" <br />responseCode = 200, Funcionário cadastrado com sucesso" + 

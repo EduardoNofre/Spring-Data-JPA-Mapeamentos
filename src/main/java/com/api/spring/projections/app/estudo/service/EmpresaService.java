@@ -68,7 +68,8 @@ public class EmpresaService {
 
 	public EmpresaEntity atualizarEmpresa(EmpresaEntity empresa) throws Exception {
 
-		if (funcionarioDao.existeEmpresa(empresa.getIdEmpresa())) {
+		if (funcionarioDao.existeEmpresa(empresa.getId_Empresa())) {
+			
 
 			return funcionarioDao.inserir(empresa);
 
